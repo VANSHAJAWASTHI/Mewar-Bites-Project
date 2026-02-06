@@ -25,6 +25,8 @@
 .form-group label {
     display: block;
     margin-bottom: 8px;
+
+
     font-weight: 600;
     color: var(--color-text);
     font-size: 0.9rem;
@@ -53,4 +55,14 @@
     width: 100%;
     padding: 15px;
     font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        padding: 25px 20px;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
 }

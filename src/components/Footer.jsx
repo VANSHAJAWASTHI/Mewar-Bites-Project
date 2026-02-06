@@ -6,7 +6,8 @@ const Footer = () => {
         <footer className="footer">
             <div className="container footer-container">
                 <div className="footer-col">
-                    <h3 className="footer-logo">Mewar Treats</h3>
+                    <img src="/images/Mewar Treats Logo.jpg" alt="Mewar Treats" className="footer-logo-img" />
+
                     <p className="footer-desc">
                         Crafting smiles, one scoop at a time. Join us on a journey
                         of traditional flavors and modern sweetness.

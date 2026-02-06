@@ -33,7 +33,11 @@ const Navbar = () => {
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
-                <div className="logo">Mewar Treats</div>
+                <div className="logo">
+                    <img src="/images/Mewar Treats Logo.jpg" alt="Mewar Treats" className="logo-img" />
+                </div>
+
+
 
                 <div className="menu-toggle" onClick={toggleMenu}>
                     {menuOpen ? <FaTimes /> : <FaBars />}

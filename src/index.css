@@ -104,6 +104,13 @@ img {
   padding: 0 var(--space-md);
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+
 /* Premium Button Styling */
 .btn {
   display: inline-block;

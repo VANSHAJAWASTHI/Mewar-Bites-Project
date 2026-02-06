@@ -20,15 +20,14 @@
     /* Ensure explicit left alignment */
 }
 
-.footer-col h3.footer-logo {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    margin-bottom: var(--space-sm);
-    color: var(--color-primary);
-    /* Luxe Black */
-    letter-spacing: -1px;
-    text-align: left;
+.footer-logo-img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: var(--space-md);
+    display: block;
 }
+
 
 .footer-desc {
     opacity: 0.8;

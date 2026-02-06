@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 0;
+    padding: 12px 0;
     z-index: 1000;
     transition: all 0.4s ease;
     color: var(--color-primary);
@@ -13,9 +13,10 @@
 
 .navbar.scrolled {
     background: var(--color-white);
-    padding: 10px 0;
+    padding: 8px 0;
     box-shadow: var(--shadow-sm);
 }
+
 
 .navbar-container {
     display: flex;
@@ -24,11 +25,24 @@
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
 }
+
+.logo-img {
+    height: 50px;
+    /* Reduced from 60px */
+    width: auto;
+    object-fit: contain;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled .logo-img {
+    height: 38px;
+    /* Reduced from 45px */
+}
+
+
 
 .nav-menu {
     display: flex;
@@ -74,6 +88,12 @@
     .menu-toggle {
         display: block;
     }
+
+    .logo-img {
+        height: 42px;
+    }
+
+
 
     .desktop-menu {
         display: none;
