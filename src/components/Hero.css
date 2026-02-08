@@ -167,7 +167,7 @@
 
 /* Slider Controls */
 /* Slider Controls */
-.slider-arrow {
+.slider-nav-zone {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -177,24 +177,16 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    /* Indication that it's clickable */
     z-index: 10;
-    transition: all 0.3s ease;
+    opacity: 0;
+    /* Ensure complete invisibility */
 }
 
-.slider-arrow:hover {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.02) 0%, transparent 100%);
-}
-
-.right-arrow:hover {
-    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.02) 0%, transparent 100%);
-}
-
-.left-arrow {
+.left-zone {
     left: 0;
 }
 
-.right-arrow {
+.right-zone {
     right: 0;
 }
 
@@ -223,7 +215,7 @@
 }
 
 @media (max-width: 768px) {
-    .slider-arrow {
+    .slider-nav-zone {
         display: none;
     }
 
