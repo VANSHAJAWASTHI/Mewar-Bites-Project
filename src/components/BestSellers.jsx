@@ -111,7 +111,7 @@ const BestSellers = () => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.1 }}
+                    viewport={{ once: true, margin: "0px" }}
                 >
                     {bestSellers.map((item) => (
                         <motion.div
