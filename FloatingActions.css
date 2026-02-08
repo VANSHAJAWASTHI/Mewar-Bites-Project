@@ -1,0 +1,57 @@
+/* FloatingActions.css */
+.floating-actions {
+    position: fixed;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.float-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+}
+
+.float-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp {
+    background-color: #25D366;
+}
+
+.whatsapp:hover {
+    background-color: #1ebc59;
+}
+
+.to-top {
+    background-color: var(--color-accent);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.to-top:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-5px);
+}
