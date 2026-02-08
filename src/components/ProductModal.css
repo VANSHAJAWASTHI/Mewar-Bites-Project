@@ -1,0 +1,140 @@
+/* ProductModal.css */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--color-bg);
+    width: 100%;
+    max-width: 900px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text);
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+    color: var(--color-secondary);
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.modal-image-col {
+    height: 100%;
+    min-height: 400px;
+    background: #f0f0f0;
+}
+
+.modal-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-text-col {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.modal-text-col h3 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    color: var(--color-primary);
+}
+
+.modal-desc {
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+.modal-details {
+    margin-bottom: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 20px 0;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-item .label {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.detail-item .value {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image-col {
+        height: 250px;
+        min-height: auto;
+    }
+
+    .modal-text-col {
+        padding: 30px;
+    }
+
+    .modal-text-col h3 {
+        font-size: 2rem;
+    }
+}
