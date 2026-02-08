@@ -41,10 +41,11 @@ const Preloader = ({ onComplete }) => {
             {/* Curved SVG for curtain effect */}
             <svg className="curtain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <motion.path
-                    d="M0 0 L100 0 L100 100 Q50 100 0 100 Z"
+                    d={loading ? "M0 0 L100 0 L100 100 Q50 100 0 100 Z" : "M0 0 L100 0 L100 0 Q50 100 0 0 Z"}
                     animate={{ d: loading ? "M0 0 L100 0 L100 100 Q50 100 0 100 Z" : "M0 0 L100 0 L100 0 Q50 100 0 0 Z" }}
+                    initial={false}
                     transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
-                    fill="#1A1A1A"
+                    fill="#FDFBF7"
                 />
             </svg>
         </motion.div>

@@ -55,7 +55,7 @@
     /* Taller for curve */
     pointer-events: none;
     z-index: 1;
-    fill: var(--color-primary);
+
     transform: translateY(-10%);
     /* Adjust positioning */
 }
