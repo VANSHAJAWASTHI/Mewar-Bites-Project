@@ -194,8 +194,10 @@
 
 @media (max-width: 968px) {
     .hero-content-wrapper {
+        display: flex;
         flex-direction: column-reverse;
         text-align: center;
+        gap: var(--space-lg);
     }
 }
 
