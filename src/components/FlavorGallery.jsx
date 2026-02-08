@@ -7,8 +7,6 @@ const allFlavors = [
     {
         id: 1,
         name: "Pista",
-        category: "Fruity", // Using Pista within Fruity/Nutty context or create new category? Let's use "Royal" or "Nutty". Let's stick to simple categories.
-        // Actually, let's redefine categories: Royal, Traditional, Chocolate, Fruity, Family Packs
         category: "Royal",
         image: "/images/Pista.jpeg",
         shortDesc: "Rich pistachio loaded kulfi.",
