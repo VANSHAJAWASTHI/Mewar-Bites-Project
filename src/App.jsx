@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import BestSellers from './components/BestSellers';
 import FlavorGallery from './components/FlavorGallery';
 import Story from './components/Story';
 import Contact from './components/Contact';
@@ -61,6 +62,8 @@ function App() {
 
         <main>
           <Hero />
+
+          <BestSellers />
 
           <div id="flavors">
             <FlavorGallery />
