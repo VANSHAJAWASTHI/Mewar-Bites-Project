@@ -30,18 +30,67 @@
 }
 
 .logo-img {
-    height: 50px;
-    /* Reduced from 60px */
+    height: 80px;
+    /* Increased from 50px */
     width: auto;
     object-fit: contain;
     transition: all 0.4s ease;
 }
 
 .navbar.scrolled .logo-img {
-    height: 38px;
-    /* Reduced from 45px */
+    height: 60px;
+    /* Increased from 38px */
 }
 
+
+/* Pure Veg Badge */
+.pure-veg-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 15px;
+}
+
+.veg-icon-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-veg-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.veg-circle {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-veg-green);
+    border-radius: 50%;
+}
+
+.veg-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-veg-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .pure-veg-badge {
+        position: absolute;
+        right: 60px;
+        /* Left of hamburger menu */
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 0;
+    }
+
+    .veg-text {
+        display: none;
+        /* Icon only on mobile to save space */
+    }
+}
 
 
 .nav-menu {

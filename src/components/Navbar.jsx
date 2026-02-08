@@ -37,6 +37,14 @@ const Navbar = () => {
                     <img src="/images/Mewar Treats Logo.jpg" alt="Mewar Treats" className="logo-img" />
                 </div>
 
+                {/* Pure Veg Indicator */}
+                <div className="pure-veg-badge">
+                    <div className="veg-icon-box">
+                        <div className="veg-circle"></div>
+                    </div>
+                    <span className="veg-text">100% Pure Veg</span>
+                </div>
+
 
 
                 <div className="menu-toggle" onClick={toggleMenu}>

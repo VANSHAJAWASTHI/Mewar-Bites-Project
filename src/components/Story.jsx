@@ -13,22 +13,22 @@ const Story = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
                 >
-                    <span className="subtitle">Since 1995</span>
-                    <h2>Traditional Roots,<br />Modern Soul.</h2>
+                    <span className="subtitle" style={{ color: 'var(--color-secondary)' }}>Since 1995</span>
+                    <h2>Heritage of <br /><span style={{ color: 'var(--color-primary)' }}>Mewar</span></h2>
 
                     <div className="divider"></div>
 
                     <p>
-                        In the rich heritage of Mewar, dessert is not just an after-meal treat—it is a ceremony.
-                        <strong>Mewar Treats</strong> began as a small family passion, churning fresh milk from our own
-                        farms with saffron, pistachios, and rose petals.
+                        Born in the heart of Rajasthan, <strong>Mewar Treats</strong> is more than a dessert brand—it's a tribute to a royal legacy.
+                        We believe that true indulgence lies in purity. That’s why every scoop is crafted from farm-fresh milk,
+                        churned slowly to perfection, and infused with the finest saffron, rose petals, and nuts.
                     </p>
                     <p>
-                        Today, we honor those traditions while embracing modern craftsmanship. Every batch is slow-churned
-                        to ensure that dense, creamy texture that our patrons have come to love.
+                        No preservatives, no shortcuts. Just the authentic taste of tradition, served with love.
+                        Experience the royal delicacy that has been delighting families for generations.
                     </p>
 
-                    <a href="#contact" className="btn btn-primary" style={{ marginTop: '20px' }}>Contact Us</a>
+                    <a href="#contact" className="btn btn-primary" style={{ marginTop: '20px' }}>Our Journey</a>
                 </motion.div>
 
                 <div className="story-visual">

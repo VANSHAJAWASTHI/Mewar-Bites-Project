@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './FlavorGallery.css'; // Reusing CSS, will add filter styles
 
 const allFlavors = [
-    { id: 1, name: "Sunset Mango", category: "Fruity", price: "₹120", image: "/images/WhatsApp Image 2026-02-05 at 10.47.55 PM (1).jpeg" },
-    { id: 2, name: "Berry Blast", category: "Fruity", price: "₹140", image: "/images/WhatsApp Image 2026-02-05 at 10.47.56 PM (1).jpeg" },
-    { id: 3, name: "Royal Pista", category: "Royal", price: "₹150", image: "/images/WhatsApp Image 2026-02-05 at 10.47.56 PM (2).jpeg" },
-    { id: 4, name: "Choco Seduction", category: "Chocolate", price: "₹130", image: "/images/WhatsApp Image 2026-02-05 at 10.47.56 PM (3).jpeg" },
-    { id: 5, name: "Kesar Delight", category: "Royal", price: "₹160", image: "/images/WhatsApp Image 2026-02-05 at 10.47.57 PM (1).jpeg" },
-    { id: 6, name: "Choco Chip", category: "Chocolate", price: "₹130", image: "/images/WhatsApp Image 2026-02-05 at 10.47.55 PM (1).jpeg" }, // Reusing image for demo
+    { id: 1, name: "Sunset Mango", category: "Fruity", image: "/images/WhatsApp Image 2026-02-05 at 10.47.55 PM (1).jpeg" },
+    { id: 2, name: "Berry Blast", category: "Fruity", image: "/images/WhatsApp Image 2026-02-05 at 10.47.56 PM (1).jpeg" },
+    { id: 3, name: "Royal Pista", category: "Royal", image: "/images/WhatsApp Image 2026-02-05 at 10.47.56 PM (2).jpeg" },
+    { id: 4, name: "Choco Seduction", category: "Chocolate", image: "/images/WhatsApp Image 2026-02-05 at 10.47.56 PM (3).jpeg" },
+    { id: 5, name: "Kesar Delight", category: "Royal", image: "/images/WhatsApp Image 2026-02-05 at 10.47.57 PM (1).jpeg" },
+    { id: 6, name: "Choco Chip", category: "Chocolate", image: "/images/WhatsApp Image 2026-02-05 at 10.47.55 PM (1).jpeg" }, // Reusing image for demo
 ];
 
 const categories = ["All", "Fruity", "Royal", "Chocolate"];
@@ -68,7 +68,6 @@ const FlavorGallery = () => {
                                 <div className="card-content">
                                     <div className="card-header">
                                         <h3>{flavor.name}</h3>
-                                        <span className="price">{flavor.price}</span>
                                     </div>
                                     <p>Artisanal scoop made with fresh ingredients.</p>
                                 </div>
@@ -103,7 +102,6 @@ const FlavorGallery = () => {
                                     <div className="modal-text-col">
                                         <span className="modal-category">{selectedFlavor.category}</span>
                                         <h3>{selectedFlavor.name}</h3>
-                                        <div className="modal-price">{selectedFlavor.price}</div>
                                         <p className="modal-desc">
                                             Indulge in the rich, creamy texture of our handcrafted {selectedFlavor.name}.
                                             Made with locally sourced, premium ingredients to deliver an authentic taste
