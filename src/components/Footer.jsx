@@ -49,7 +49,7 @@ const Footer = () => {
             </div>
 
             <div className="footer-bottom">
-                <p>&copy; 2026 Mewar Treats. Made with <FaHeart style={{ color: '#e25555', display: 'inline', width: '12px' }} /> in Rajasthan, India.</p>
+                <p>&copy; 2024 Mewar Treats. Made with <FaHeart style={{ color: '#e25555', display: 'inline', width: '12px' }} /> in Rajasthan, India.</p>
             </div>
         </footer>
     );

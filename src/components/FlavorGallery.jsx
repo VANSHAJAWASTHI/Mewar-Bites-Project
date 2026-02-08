@@ -135,6 +135,7 @@ const FlavorGallery = () => {
     const [filteredFlavors, setFilteredFlavors] = useState(allFlavors);
     const [selectedFlavor, setSelectedFlavor] = useState(null);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         if (activeCategory === "All") {
             setFilteredFlavors(allFlavors);

@@ -22,13 +22,14 @@ const Preloader = ({ onComplete }) => {
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
         >
             <div className="preloader-content">
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                >
-                    Mewar Treats
-                </motion.h1>
+                <motion.img
+                    src="/images/Mewar Treats Logo.png"
+                    alt="Mewar Treats"
+                    className="preloader-logo"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                />
                 <motion.div
                     className="loader-line"
                     initial={{ width: 0 }}
