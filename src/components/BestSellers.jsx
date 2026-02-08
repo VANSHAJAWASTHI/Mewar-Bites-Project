@@ -110,8 +110,7 @@ const BestSellers = () => {
                     className="best-sellers-grid"
                     variants={containerVariants}
                     initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
+                    animate="show"
                 >
                     {bestSellers.map((item) => (
                         <motion.div
