@@ -13,7 +13,7 @@ const Story = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
                 >
-                    <span className="subtitle" style={{ color: 'var(--color-secondary)' }}>Since 1995</span>
+                    <span className="subtitle" style={{ color: 'var(--color-secondary)' }}>Since 2024</span>
                     <h2>Heritage of <br /><span style={{ color: 'var(--color-primary)' }}>Mewar</span></h2>
 
                     <div className="divider"></div>
