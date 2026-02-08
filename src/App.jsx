@@ -8,7 +8,6 @@ import Story from './components/Story';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
-import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
@@ -54,8 +53,6 @@ function App() {
       <AnimatePresence mode='wait'>
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
-
-      <CustomCursor />
 
       <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.5s ease' }}>
         <Navbar />
