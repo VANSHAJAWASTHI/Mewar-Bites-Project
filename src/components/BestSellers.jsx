@@ -108,32 +108,30 @@ const BestSellers = () => {
 
                 <motion.div
                     className="best-sellers-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="show"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                 >
                     {bestSellers.map((item) => (
-                        <motion.div
+                        <div
                             key={item.id}
                             className="best-seller-card"
-                            variants={itemVariants}
                             onClick={() => setSelectedProduct(item)}
-                            layoutId={`card-${item.id}`}
                         >
                             <div className="bs-image-wrapper">
                                 <span className="bs-tag">Top Pick</span>
-                                <motion.img
+                                <img
                                     src={item.image}
                                     alt={item.name}
                                     className="bs-img"
                                     loading="lazy"
-                                    layoutId={`image-${item.id}`}
                                 />
                             </div>
                             <div className="bs-content">
                                 <h3 className="bs-title">{item.name}</h3>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </motion.div>
 
