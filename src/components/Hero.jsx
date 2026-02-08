@@ -55,13 +55,10 @@ const Hero = () => {
         <section id="home" className="hero-section">
             <div className="container hero-container">
 
-                {/* Carousel Navigation */}
-                <button className="slider-arrow left-arrow" onClick={prevSlide}>
-                    <FaChevronLeft />
-                </button>
-                <button className="slider-arrow right-arrow" onClick={nextSlide}>
-                    <FaChevronRight />
-                </button>
+                {/* Carousel Navigation - Invisible Click Zones */}
+                {/* Carousel Navigation - Invisible Click Zones */}
+                <div className="slider-nav-zone left-zone" onClick={prevSlide}></div>
+                <div className="slider-nav-zone right-zone" onClick={nextSlide}></div>
 
                 <AnimatePresence mode='wait'>
                     <motion.div
