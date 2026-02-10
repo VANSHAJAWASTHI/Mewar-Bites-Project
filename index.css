@@ -1,14 +1,20 @@
 :root {
   /* Premium Palette - Extracted from Logo */
-  --color-bg: #FDFBF7; /* Warm Cream */
-  --color-text: #2C2C2C; /* Soft Charcoal */
-  
-  --color-primary: #4A2C2A; /* Deep Maroon (Brand Primary) */
-  --color-secondary: #C5A059; /* Antique Gold (Brand Accent) */
-  
-  --color-accent: #E6BCCD; /* Dusty Rose (Retained for softness) */
-  --color-veg-green: #008000; /* Standard Pure Veg Green */
-  
+  --color-bg: #FDFBF7;
+  /* Warm Cream */
+  --color-text: #2C2C2C;
+  /* Soft Charcoal */
+
+  --color-primary: #4A2C2A;
+  /* Deep Maroon (Brand Primary) */
+  --color-secondary: #C5A059;
+  /* Antique Gold (Brand Accent) */
+
+  --color-accent: #E6BCCD;
+  /* Dusty Rose (Retained for softness) */
+  --color-veg-green: #008000;
+  /* Standard Pure Veg Green */
+
   --color-white: #ffffff;
   --color-glass: rgba(255, 255, 255, 0.95);
 
@@ -25,7 +31,8 @@
   --space-xxl: 96px;
 
   /* Elevations */
-  --shadow-sm: 0 4px 12px rgba(74, 44, 42, 0.08); /* Tinted shadow */
+  --shadow-sm: 0 4px 12px rgba(74, 44, 42, 0.08);
+  /* Tinted shadow */
   --shadow-md: 0 12px 24px -6px rgba(74, 44, 42, 0.12);
   --shadow-lg: 0 24px 48px -12px rgba(74, 44, 42, 0.18);
 
@@ -43,6 +50,7 @@
 }
 
 html {
+
   font-size: 16px;
 }
 
