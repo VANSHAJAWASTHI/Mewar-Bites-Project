@@ -1,0 +1,70 @@
+/* BestSellers.css */
+.best-sellers-section {
+    background-color: var(--color-bg);
+    position: relative;
+}
+
+.best-sellers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.best-seller-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s var(--ease-out);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.best-seller-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.bs-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+    background: #f0ebe5;
+}
+
+.bs-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.best-seller-card:hover .bs-img {
+    transform: scale(1.05);
+}
+
+.bs-content {
+    padding: var(--space-sm);
+}
+
+.bs-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 0;
+}
+
+.bs-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--color-secondary);
+    color: var(--color-bg);
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+}

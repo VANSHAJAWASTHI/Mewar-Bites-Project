@@ -1,0 +1,307 @@
+/* FlavorGallery.css */
+.flavors-section {
+    background-color: var(--color-white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.subtitle {
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--color-text);
+    opacity: 0.5;
+    cursor: pointer;
+    padding-bottom: 5px;
+    position: relative;
+    transition: opacity 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    opacity: 1;
+}
+
+.filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+.flavor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.flavor-card {
+    background: var(--color-white);
+    cursor: pointer;
+}
+
+.category-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+    border-radius: 20px;
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    margin-bottom: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease;
+}
+
+.flavor-card:hover .card-image-wrapper {
+    box-shadow: var(--shadow-lg);
+}
+
+.flavor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.flavor-card:hover .flavor-image {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.flavor-card:hover .overlay {
+    opacity: 1;
+}
+
+.view-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-white);
+    color: var(--color-text);
+    border: none;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.flavor-card:hover .view-btn {
+    opacity: 1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-xs);
+}
+
+.card-content h3 {
+    font-size: 1.25rem;
+    font-family: var(--font-heading);
+}
+
+.card-content p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.price {
+    font-family: var(--font-body);
+    color: var(--color-secondary);
+    font-weight: 600;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--color-bg);
+    width: 100%;
+    max-width: 900px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text);
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+    color: var(--color-secondary);
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.modal-image-col {
+    height: 100%;
+    min-height: 400px;
+    background: #f0f0f0;
+}
+
+.modal-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-text-col {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.modal-text-col h3 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-family: var(--font-body);
+}
+
+.modal-desc {
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+.modal-details {
+    margin-bottom: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 20px 0;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-item .label {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.detail-item .value {
+    opacity: 0.7;
+}
+
+.order-btn {
+    align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image-col {
+        height: 250px;
+        min-height: auto;
+    }
+
+    .modal-text-col {
+        padding: 30px;
+    }
+
+    .modal-text-col h3 {
+        font-size: 2rem;
+    }
+}

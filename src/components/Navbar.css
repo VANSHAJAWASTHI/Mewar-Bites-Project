@@ -1,0 +1,174 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 0;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.navbar.scrolled {
+    background: var(--color-white);
+    padding: 8px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 85px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.4s ease;
+    mix-blend-mode: multiply;
+    /* Removes white background */
+}
+
+.navbar.scrolled .logo-img {
+    height: 65px;
+}
+
+
+/* Pure Veg Badge */
+.pure-veg-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    /* Push to right */
+    margin-right: 40px;
+    /* Space between badge and menu */
+}
+
+.veg-icon-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-veg-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.veg-circle {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-veg-green);
+    border-radius: 50%;
+}
+
+.veg-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-veg-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .pure-veg-badge {
+        position: absolute;
+        right: 60px;
+        /* Left of hamburger menu */
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        /* Reset margins for mobile absolute positioning */
+    }
+
+    .veg-text {
+        display: none;
+        /* Icon only on mobile to save space */
+    }
+}
+
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Mobile Toggle */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    z-index: 1001;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo-img {
+        height: 42px;
+    }
+
+
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%;
+        height: 100vh;
+        background: var(--color-bg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: var(--space-lg);
+        gap: var(--space-lg);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .mobile-menu .nav-link {
+        font-size: 1.2rem;
+    }
+}
