@@ -143,6 +143,7 @@ const FlavorGallery = () => {
     }, [activeCategory]);
 
     return (
+<<<<<<< HEAD
         <section id="flavors" className="flavor-gallery-section section-padding" itemScope itemType="https://schema.org/Menu">
             <div className="container">
                 <header className="section-header text-center">
@@ -150,6 +151,14 @@ const FlavorGallery = () => {
                     <h2 itemProp="name">Artisanal Flavors</h2>
                     <p itemProp="description">Discover our handcrafted selection of traditional Rajasthani ice creams and kulfis</p>
                 </header>
+=======
+        <section className="flavors-section section-padding">
+            <div className="container">
+                <div className="section-header text-center">
+                    <span className="subtitle">Our Collections</span>
+                    <h2>Curated Delights</h2>
+                </div>
+>>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
 
                 <div className="filter-tabs">
                     {categories.map(cat => (
@@ -167,7 +176,11 @@ const FlavorGallery = () => {
                 <motion.div layout className="flavor-grid">
                     <AnimatePresence>
                         {filteredFlavors.map((flavor) => (
+<<<<<<< HEAD
                             <motion.article
+=======
+                            <motion.div
+>>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                                 className="flavor-card"
                                 key={flavor.id}
                                 layout
@@ -177,30 +190,48 @@ const FlavorGallery = () => {
                                 transition={{ duration: 0.4 }}
                                 onClick={() => setSelectedFlavor(flavor)}
                                 layoutId={`card-${flavor.id}`}
+<<<<<<< HEAD
                                 itemScope
                                 itemType="https://schema.org/MenuItem"
+=======
+>>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                             >
                                 <div className="card-image-wrapper">
                                     <div className="category-tag">{flavor.category}</div>
                                     <motion.img
                                         src={flavor.image}
+<<<<<<< HEAD
                                         alt={`${flavor.name} - ${flavor.shortDesc}`}
                                         className="flavor-image"
                                         loading="lazy"
                                         layoutId={`image-${flavor.id}`}
                                         itemProp="image"
+=======
+                                        alt={flavor.name}
+                                        className="flavor-image"
+                                        loading="lazy"
+                                        layoutId={`image-${flavor.id}`}
+>>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                                     />
                                     <div className="overlay"></div>
 
                                 </div>
                                 <div className="card-content">
                                     <div className="card-header">
+<<<<<<< HEAD
                                         <h3 itemProp="name">{flavor.name}</h3>
                                     </div>
                                     <p itemProp="description">{flavor.shortDesc}</p>
                                     <meta itemProp="offers" content={`Price available on request - ${flavor.category} collection`} />
                                 </div>
                             </motion.article>
+=======
+                                        <h3>{flavor.name}</h3>
+                                    </div>
+                                    <p>{flavor.shortDesc}</p>
+                                </div>
+                            </motion.div>
+>>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                         ))}
                     </AnimatePresence>
                 </motion.div>
