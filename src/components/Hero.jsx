@@ -35,6 +35,7 @@ const slides = [
 const Hero = () => {
     const [current, setCurrent] = useState(0);
     const length = slides.length;
+    const isServer = typeof window === 'undefined';
 
     useEffect(() => {
         // Preload images
@@ -63,7 +64,7 @@ const Hero = () => {
                     <motion.div
                         key={current}
                         className="hero-content-wrapper"
-                        initial={{ opacity: 0 }}
+                        initial={isServer ? false : { opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
@@ -91,15 +92,15 @@ const Hero = () => {
                             </p>
 
                             <nav className="hero-cta" aria-label="Main navigation">
-                                <a href="#flavors" className="btn btn-primary" aria-label="Discover our artisanal ice cream flavors">Discover Flavors</a>
-                                <a href="#about" className="btn" aria-label="Learn about our philosophy and heritage">Our Philosophy</a>
+                                <a href="/#flavors" className="btn btn-primary" aria-label="Discover our artisanal ice cream flavors">Discover Flavors</a>
+                                <a href="/#about" className="btn" aria-label="Learn about our philosophy and heritage">Our Philosophy</a>
                             </nav>
                         </header>
 
                         <div className="hero-visual">
                             <motion.div
                                 className="hero-image-container"
-                                initial={{ scale: 0.9, opacity: 0 }}
+                                initial={isServer ? false : { scale: 0.9, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ duration: 0.8 }}
                             >

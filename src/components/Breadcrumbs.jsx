@@ -1,38 +1,32 @@
 import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Breadcrumbs.css';
+import { getFlavorBySlug } from '../data/siteContent';
 
 const Breadcrumbs = () => {
   const location = useLocation();
 
   const breadcrumbs = useMemo(() => {
-    const pathSegments = location.pathname.split('/').filter(segment => segment);
-    const breadcrumbItems = [
-      { name: 'Home', path: '/' }
-    ];
+    const pathSegments = location.pathname.split('/').filter(Boolean);
 
-    // Handle hash-based routing for SPA
-    if (location.hash) {
-      const hashSegments = location.hash.substring(1).split('/');
-      
-      if (hashSegments[0]) {
-        const sectionMap = {
-          'home': 'Home',
-          'flavors': 'Collections',
-          'about': 'About Us',
-          'contact': 'Contact'
-        };
-        
-        const sectionName = sectionMap[hashSegments[0]] || hashSegments[0];
-        breadcrumbItems.push({
-          name: sectionName,
-          path: `#${hashSegments[0]}`
+    if (pathSegments.length === 0) {
+      return [];
+    }
+
+    const items = [{ name: 'Home', path: '/' }];
+
+    if (pathSegments[0] === 'flavors') {
+      if (pathSegments[1]) {
+        const flavor = getFlavorBySlug(pathSegments[1]);
+        items.push({
+          name: flavor ? flavor.name : pathSegments[1].replace(/-/g, ' '),
+          path: location.pathname,
         });
       }
     }
 
-    return breadcrumbItems;
-  }, [location]);
+    return items;
+  }, [location.pathname]);
 
   if (breadcrumbs.length <= 1) return null;
 

@@ -2,13 +2,14 @@ import { motion } from 'framer-motion';
 import './Story.css';
 
 const Story = () => {
+    const isServer = typeof window === 'undefined';
     return (
-        <section className="story-section section-padding" itemScope itemType="https://schema.org/AboutPage">
+        <section id="about" className="story-section section-padding" itemScope itemType="https://schema.org/AboutPage">
             <div className="container story-container">
 
                 <motion.article
                     className="story-content"
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={isServer ? false : { opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
@@ -30,13 +31,13 @@ const Story = () => {
                         </p>
                     </div>
 
-                    <a href="#contact" className="btn btn-primary" style={{ marginTop: '20px' }} aria-label="Contact us to learn more about our journey">Our Journey</a>
+                    <a href="/#contact" className="btn btn-primary" style={{ marginTop: '20px' }} aria-label="Contact us to learn more about our journey">Our Journey</a>
                 </motion.article>
 
                 <div className="story-visual">
                     <motion.div
                         className="visual-bg"
-                        initial={{ scaleX: 0 }}
+                        initial={isServer ? false : { scaleX: 0 }}
                         whileInView={{ scaleX: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -45,7 +46,7 @@ const Story = () => {
                         src="/images/Matka Kulfi.jpeg"
                         alt="Traditional Matka Kulfi - Heritage of Mewar"
                         className="story-img"
-                        initial={{ scale: 0.8, opacity: 0 }}
+                        initial={isServer ? false : { scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.3 }}

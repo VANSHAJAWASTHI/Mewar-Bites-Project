@@ -1,105 +1,103 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { site } from '../data/siteContent';
 
-const SEOHead = ({ title, description, image, type = 'website' }) => {
-  const location = useLocation();
-  const siteUrl = 'https://mewartreats.com';
-  const fullUrl = `${siteUrl}${location.pathname}`;
-  
-  const defaultTitle = 'Mewar Treats - Artisanal Rajasthani Ice Cream & Kulfi | 100% Pure Vegetarian';
-  const defaultDescription = 'Mewar Treats - Authentic Rajasthani artisanal ice cream and kulfi. 100% pure vegetarian, handcrafted with traditional recipes. Experience royal heritage flavors since 2024.';
-  const defaultImage = '/images/Mewar Treats Logo.png';
+const normalizeStructuredData = (structuredData, schemaType, pageData) => {
+  if (structuredData) {
+    return Array.isArray(structuredData) ? structuredData : [structuredData];
+  }
 
-  const seoData = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    image: image || defaultImage,
-    url: fullUrl,
-    type: type
-  };
+  if (schemaType === 'product') {
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: pageData.title,
+        description: pageData.description,
+        image: `${site.url}${pageData.image}`,
+        url: pageData.url,
+        brand: {
+          '@type': 'Brand',
+          name: site.name,
+        },
+      },
+    ];
+  }
 
-  // Generate structured data based on page type
-  const getStructuredData = () => {
-    const baseData = {
+  return [
+    {
       '@context': 'https://schema.org',
-      '@type': type === 'product' ? 'Product' : 'FoodService',
-      name: seoData.title,
-      description: seoData.description,
-      image: `${siteUrl}${seoData.image}`,
-      url: seoData.url,
+      '@type': 'FoodService',
+      name: site.name,
+      description: pageData.description || site.description,
+      url: pageData.url,
+      telephone: '+91 77478 70418',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Udaipur',
         addressRegion: 'Rajasthan',
-        addressCountry: 'IN'
+        addressCountry: 'IN',
       },
       servesCuisine: 'Rajasthani',
-      priceRange: '$$'
-    };
+      priceRange: '$$',
+      sameAs: ['https://www.instagram.com/mewartreats'],
+    },
+  ];
+};
 
-    if (type === 'product') {
-      return {
-        ...baseData,
-        '@type': 'Product',
-        offers: {
-          '@type': 'Offer',
-          price: 'Available on request',
-          priceCurrency: 'INR',
-          availability: 'https://schema.org/InStock'
-        },
-        category: 'Ice Cream & Kulfi',
-        brand: {
-          '@type': 'Brand',
-          name: 'Mewar Treats'
-        }
-      };
-    }
-
-    return baseData;
+const SEOHead = ({
+  title,
+  description,
+  image = site.defaultImage,
+  canonicalPath,
+  robots = 'index, follow, max-snippet:-1, max-image-preview:large',
+  schemaType = 'business',
+  structuredData,
+}) => {
+  const location = useLocation();
+  const path = canonicalPath || location.pathname;
+  const canonicalUrl = `${site.url}${path}`;
+  const pageData = {
+    title,
+    description,
+    image,
+    url: canonicalUrl,
   };
+  const schemaItems = normalizeStructuredData(structuredData, schemaType, pageData);
 
   return (
-    <Helmet>
-      {/* Primary Meta Tags */}
-      <title>{seoData.title}</title>
-      <meta name="description" content={seoData.description} />
-      <meta name="keywords" content="artisanal ice cream, Rajasthani kulfi, traditional Indian desserts, pure veg ice cream, Mewar treats, handcrafted ice cream, royal desserts, Udaipur ice cream" />
-      
-      {/* Canonical URL */}
-      <link rel="canonical" href={seoData.url} />
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={type} />
-      <meta property="og:title" content={seoData.title} />
-      <meta property="og:description" content={seoData.description} />
-      <meta property="og:image" content={`${siteUrl}${seoData.image}`} />
+    <Helmet prioritizeSeoTags>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="robots" content={robots} />
+      <meta name="author" content={site.name} />
+      <meta name="language" content="English" />
+
+      <link rel="canonical" href={canonicalUrl} />
+
+      <meta property="og:type" content={schemaType === 'product' ? 'product' : 'website'} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={`${site.url}${image}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:url" content={seoData.url} />
-      <meta property="og:site_name" content="Mewar Treats" />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:site_name" content={site.name} />
       <meta property="og:locale" content="en_IN" />
-      
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content={seoData.title} />
-      <meta property="twitter:description" content={seoData.description} />
-      <meta property="twitter:image" content={`${siteUrl}${seoData.image}`} />
-      
-      {/* Additional SEO Tags */}
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-      <meta name="author" content="Mewar Treats" />
-      <meta name="language" content="English" />
-      <meta name="geo.region" content="IN-RJ" />
-      <meta name="geo.placename" content="Udaipur, Rajasthan" />
-      <meta name="geo.position" content="24.5854;73.7127" />
-      <meta name="ICBM" content="24.5854, 73.7127" />
-      
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(getStructuredData())}
-      </script>
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={`${site.url}${image}`} />
+
+      {schemaItems.map((schema, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
     </Helmet>
   );
 };
 
 export default SEOHead;
+

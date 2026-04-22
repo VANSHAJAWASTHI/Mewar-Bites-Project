@@ -39,6 +39,22 @@
     cursor: pointer;
 }
 
+.best-seller-link {
+    display: block;
+    color: inherit;
+    height: 100%;
+}
+
+.view-flavor-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: var(--space-xs);
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+}
+
 /* ... existing styles ... */
 
 .best-seller-card:hover {

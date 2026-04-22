@@ -1,25 +1,22 @@
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Lenis from 'lenis';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import BestSellers from './components/BestSellers';
-import FlavorGallery from './components/FlavorGallery';
-import Story from './components/Story';
-import FAQSection from './components/FAQSection';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import Preloader from './components/Preloader';
-import SEOHead from './components/SEOHead';
+import CustomCursor from './components/CustomCursor';
 import Analytics from './components/Analytics';
-import { AnimatePresence } from 'framer-motion';
+import HomePage from './pages/HomePage';
+import FlavorPage from './pages/FlavorPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 
-function App() {
-  const [loading, setLoading] = useState(true);
+function App({ initialLoading = true }) {
+  const [loading, setLoading] = useState(initialLoading);
 
   useEffect(() => {
-    // Scroll locking during load
     if (loading) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -28,13 +25,12 @@ function App() {
   }, [loading]);
 
   useEffect(() => {
-    // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
-      smooth: loading ? false : true, // Disable lenis while loading
+      smooth: loading ? false : true,
       mouseMultiplier: 1,
       smoothTouch: false,
       touchMultiplier: 2,
@@ -48,7 +44,6 @@ function App() {
 
     animationFrameId = requestAnimationFrame(raf);
 
-    // Disable logic cleanup
     return () => {
       lenis.destroy();
       cancelAnimationFrame(animationFrameId);
@@ -58,13 +53,9 @@ function App() {
   return (
     <div className="app-wrapper">
       <Analytics />
-      <SEOHead 
-        title="Mewar Treats - Artisanal Rajasthani Ice Cream & Kulfi | 100% Pure Vegetarian"
-        description="Mewar Treats - Authentic Rajasthani artisanal ice cream and kulfi. 100% pure vegetarian, handcrafted with traditional recipes. Experience royal heritage flavors since 2024."
-        image="/images/Mewar Treats Logo.png"
-      />
-      
-      <AnimatePresence mode='wait'>
+      <CustomCursor />
+
+      <AnimatePresence mode="wait">
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
@@ -72,30 +63,18 @@ function App() {
         <Navbar />
 
         <main>
-          <Hero />
-
-          <BestSellers />
-
-          <div id="flavors">
-            <FlavorGallery />
-          </div>
-
-          <div id="about">
-            <Story />
-          </div>
-
-          <FAQSection />
-
-          <div id="contact">
-            <Contact />
-          </div>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/flavors/:slug" element={<FlavorPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
         </main>
 
         <Footer />
         <FloatingActions />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

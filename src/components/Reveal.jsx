@@ -3,9 +3,13 @@ import './Reveal.css';
 
 const Reveal = ({ children, animation = 'fade-up', delay = 0 }) => {
     const ref = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(typeof window === 'undefined');
 
     useEffect(() => {
+        if (typeof window === 'undefined') {
+            return undefined;
+        }
+
         const element = ref.current;
         const observer = new IntersectionObserver(
             ([entry]) => {

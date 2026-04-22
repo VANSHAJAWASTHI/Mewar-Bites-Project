@@ -89,7 +89,8 @@
     text-align: left;
 }
 
-.contact-info li span {
+.contact-info li span,
+.contact-info li svg {
     min-width: 20px;
     /* Fixed width for icons to prevent misalignment */
     display: flex;
@@ -175,6 +176,11 @@
     }
 
     .contact-info li span {
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .contact-info li svg {
         justify-content: center;
         margin-top: 0;
     }

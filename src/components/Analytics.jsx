@@ -1,26 +1,28 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim();
+
 const Analytics = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Google Analytics 4 Configuration
+    if (!measurementId) {
+      return undefined;
+    }
+
     window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+
+    window.gtag = window.gtag || gtag;
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX', {
+    gtag('config', measurementId, {
       page_path: location.pathname + location.search + location.hash,
-      cookie_flags: 'sameSite=none;secure'
+      cookie_flags: 'sameSite=none;secure',
     });
 
-    // Track page views
-    gtag('event', 'page_view', {
-      page_title: document.title,
-      page_location: window.location.href
-    });
-
-    // Core Web Vitals tracking
     const reportWebVitals = (onPerfEntry) => {
       if (onPerfEntry && onPerfEntry instanceof Function) {
         import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
@@ -38,82 +40,67 @@ const Analytics = () => {
         value: Math.round(metric.value),
         event_category: 'Web Vitals',
         event_label: metric.id,
-        non_interaction: true
+        non_interaction: true,
       });
     });
 
-    // Custom event tracking
     const trackEvent = (eventName, parameters) => {
       gtag('event', eventName, parameters);
     };
 
-    // Track scroll depth
     let maxScroll = 0;
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) {
+        return;
+      }
+
       const currentScroll = (window.scrollY / scrollHeight) * 100;
-      
+
       if (currentScroll > maxScroll) {
         maxScroll = currentScroll;
-        
-        // Track scroll milestones
+
         if (maxScroll >= 25 && maxScroll < 50) {
-          trackEvent('scroll', {
-            event_category: 'engagement',
-            event_label: '25%'
-          });
+          trackEvent('scroll', { event_category: 'engagement', event_label: '25%' });
         } else if (maxScroll >= 50 && maxScroll < 75) {
-          trackEvent('scroll', {
-            event_category: 'engagement',
-            event_label: '50%'
-          });
+          trackEvent('scroll', { event_category: 'engagement', event_label: '50%' });
         } else if (maxScroll >= 75 && maxScroll < 90) {
-          trackEvent('scroll', {
-            event_category: 'engagement',
-            event_label: '75%'
-          });
+          trackEvent('scroll', { event_category: 'engagement', event_label: '75%' });
         } else if (maxScroll >= 90) {
-          trackEvent('scroll', {
-            event_category: 'engagement',
-            event_label: '90%'
-          });
+          trackEvent('scroll', { event_category: 'engagement', event_label: '90%' });
         }
       }
     };
 
-    // Track form submissions
     const trackFormSubmit = (event) => {
       if (event.target.classList.contains('contact-form')) {
         trackEvent('form_submit', {
           event_category: 'lead_generation',
-          event_label: 'distributorship_enquiry'
+          event_label: 'distributorship_enquiry',
         });
       }
     };
 
-    // Track product interactions
     const trackProductClick = (event) => {
       if (event.target.closest('.flavor-card') || event.target.closest('.best-seller-card')) {
         trackEvent('product_click', {
           event_category: 'engagement',
-          event_label: 'product_view'
+          event_label: 'product_view',
         });
       }
     };
 
-    // Event listeners
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     document.addEventListener('submit', trackFormSubmit);
     document.addEventListener('click', trackProductClick);
 
-    // Track time on page
     const startTime = Date.now();
     const trackTimeOnPage = () => {
       const timeSpent = Math.round((Date.now() - startTime) / 1000);
       trackEvent('time_on_page', {
         event_category: 'engagement',
         value: timeSpent,
-        non_interaction: true
+        non_interaction: true,
       });
     };
 
@@ -127,15 +114,20 @@ const Analytics = () => {
     };
   }, [location]);
 
-  // Load Google Analytics script
   useEffect(() => {
+    if (!measurementId) {
+      return undefined;
+    }
+
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
   }, []);
 
@@ -143,3 +135,4 @@ const Analytics = () => {
 };
 
 export default Analytics;
+

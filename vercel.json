@@ -9,6 +9,48 @@
       }
     }
   ],
+  "rewrites": [
+    {
+      "source": "/flavors/pista",
+      "destination": "/flavors/pista.html"
+    },
+    {
+      "source": "/flavors/rabri-dryfruit-kulfi",
+      "destination": "/flavors/rabri-dryfruit-kulfi.html"
+    },
+    {
+      "source": "/flavors/rabri-kulfi",
+      "destination": "/flavors/rabri-kulfi.html"
+    },
+    {
+      "source": "/flavors/rajbhog",
+      "destination": "/flavors/rajbhog.html"
+    },
+    {
+      "source": "/flavors/roasted-almonds",
+      "destination": "/flavors/roasted-almonds.html"
+    },
+    {
+      "source": "/flavors/choco-vanilla",
+      "destination": "/flavors/choco-vanilla.html"
+    },
+    {
+      "source": "/flavors/mango-bar",
+      "destination": "/flavors/mango-bar.html"
+    },
+    {
+      "source": "/flavors/matka-kulfi",
+      "destination": "/flavors/matka-kulfi.html"
+    },
+    {
+      "source": "/flavors/kesar-kulfi",
+      "destination": "/flavors/kesar-kulfi.html"
+    },
+    {
+      "source": "/flavors/mini-chocobar",
+      "destination": "/flavors/mini-chocobar.html"
+    }
+  ],
   "routes": [
     {
       "src": "/sw.js",
@@ -16,18 +58,43 @@
         "Cache-Control": "public, max-age=0, must-revalidate",
         "Service-Worker-Allowed": "/"
       }
-    },
-    {
-      "src": "/(.*)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/",
       "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/flavors/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
@@ -47,11 +114,23 @@
       ]
     },
     {
-      "source": "/images/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
         }
       ]
     }

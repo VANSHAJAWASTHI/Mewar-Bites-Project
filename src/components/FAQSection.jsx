@@ -5,6 +5,7 @@ import './FAQSection.css';
 
 const FAQSection = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const isServer = typeof window === 'undefined';
 
   const faqs = [
     {
@@ -50,7 +51,7 @@ const FAQSection = () => {
       <div className="container">
         <motion.header 
           className="section-header text-center"
-          initial={{ opacity: 0, y: 30 }}
+          initial={isServer ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
@@ -65,7 +66,7 @@ const FAQSection = () => {
             <motion.article
               key={index}
               className={`faq-item ${activeIndex === index ? 'active' : ''}`}
-              initial={{ opacity: 0, x: -20 }}
+              initial={isServer ? false : { opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -106,13 +107,13 @@ const FAQSection = () => {
 
         <motion.div
           className="faq-cta text-center"
-          initial={{ opacity: 0, y: 20 }}
+          initial={isServer ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <p>Still have questions? We're here to help!</p>
-          <a href="#contact" className="btn btn-primary" aria-label="Contact us for more information">
+          <a href="/#contact" className="btn btn-primary" aria-label="Contact us for more information">
             Contact Support
           </a>
         </motion.div>

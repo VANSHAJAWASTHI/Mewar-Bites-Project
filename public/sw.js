@@ -1,73 +1,60 @@
-const CACHE_NAME = 'mewartreats-v1';
-const urlsToCache = [
-  '/',
-  '/manifest.json',
-  '/images/Mewar Treats Logo.png',
-  '/images/Pista.jpeg',
-  '/images/Rajbhog.jpeg',
-  '/images/Mango Bar.jpeg',
-  '/images/Rabri Kulfi.jpeg',
-  '/images/Matka Kulfi.jpeg'
-];
+const CACHE_NAME = 'mewartreats-v2';
+const ASSET_EXTENSIONS = ['.js', '.css', '.png', '.jpg', '.jpeg', '.svg', '.webp', '.ico', '.json', '.woff', '.woff2'];
 
-// Install event - cache resources
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
+self.addEventListener('install', (event) => {
+  event.waitUntil(self.skipWaiting());
 });
 
-// Fetch event - serve from cache when offline
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
+  const request = event.request;
+
+  if (request.method !== 'GET') {
+    return;
+  }
+
+  const url = new URL(request.url);
+  const isNavigationRequest = request.mode === 'navigate';
+  const isStaticAsset = ASSET_EXTENSIONS.some((extension) => url.pathname.endsWith(extension));
+
+  if (isNavigationRequest) {
+    event.respondWith(
+      fetch(request).catch(() => caches.match('/index.html'))
+    );
+    return;
+  }
+
+  if (!isStaticAsset) {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
+    caches.open(CACHE_NAME).then(async (cache) => {
+      const cachedResponse = await cache.match(request);
+      if (cachedResponse) {
+        return cachedResponse;
+      }
 
-        // Clone the request
-        const fetchRequest = event.request.clone();
+      const networkResponse = await fetch(request);
+      if (networkResponse && networkResponse.status === 200) {
+        cache.put(request, networkResponse.clone());
+      }
 
-        return fetch(fetchRequest).then(
-          response => {
-            // Check if valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // Clone the response
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
-      })
+      return networkResponse;
+    })
   );
 });
 
-// Activate event - clean up old caches
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
+          return undefined;
         })
-      );
-    })
+      )
+    ).then(() => self.clients.claim())
   );
 });
