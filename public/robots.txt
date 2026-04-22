@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+# Allow all important directories
+Allow: /images/
+Allow: /public/
+Allow: /src/
+
+# Block non-essential files
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /src/components/
+Disallow: /*.jsx$
+
+# Sitemap location
+Sitemap: https://mewartreats.com/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Special instructions for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1

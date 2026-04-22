@@ -1,0 +1,61 @@
+/* Preloader.css */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #FDFBF7;
+    /* Match site bg */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    position: relative;
+    z-index: 10;
+}
+
+.preloader-logo {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+    mix-blend-mode: multiply;
+    /* Blend with cream bg */
+}
+
+.preloader h1 {
+    color: var(--color-white);
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.loader-line {
+    height: 2px;
+    background-color: var(--color-secondary);
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+.curtain-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    /* Taller for curve */
+    pointer-events: none;
+    z-index: 1;
+
+    transform: translateY(-10%);
+    /* Adjust positioning */
+}

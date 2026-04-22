@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/images/Mewar Treats Logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="google-site-verification" content="pVuQ3gBTWMO_NCY-OOAhra1nIiV6LaRoz1DRovfAmr8" />
+  
+  <!-- Advanced SEO Meta Tags -->
+  <meta name="description" content="Mewar Treats - Authentic Rajasthani artisanal ice cream and kulfi. 100% pure vegetarian, handcrafted with traditional recipes. Experience royal heritage flavors since 2024.">
+  <meta name="keywords" content="artisanal ice cream, Rajasthani kulfi, traditional Indian desserts, pure veg ice cream, Mewar treats, handcrafted ice cream, royal desserts, Udaipur ice cream">
+  <meta name="author" content="Mewar Treats">
+  <meta name="language" content="English">
+  <meta name="geo.region" content="IN-RJ">
+  <meta name="geo.placename" content="Udaipur, Rajasthan">
+  <meta name="geo.position" content="24.5854;73.7127">
+  <meta name="ICBM" content="24.5854, 73.7127">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mewar Treats - Artisanal Rajasthani Ice Cream & Kulfi">
+  <meta property="og:description" content="Experience the royal heritage of Mewar with our handcrafted ice cream and kulfi. 100% pure vegetarian, traditional recipes, authentic flavors.">
+  <meta property="og:image" content="/images/Mewar Treats Logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://mewartreats.com">
+  <meta property="og:site_name" content="Mewar Treats">
+  <meta property="og:locale" content="en_IN">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mewar Treats - Artisanal Rajasthani Ice Cream">
+  <meta name="twitter:description" content="Royal heritage ice cream and kulfi. 100% pure vegetarian, handcrafted with love.">
+  <meta name="twitter:image" content="/images/Mewar Treats Logo.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://mewartreats.com">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://wa.me">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#d4a574">
+  <meta name="msapplication-TileColor" content="#d4a574">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodService",
+    "name": "Mewar Treats",
+    "description": "Authentic Rajasthani artisanal ice cream and kulfi makers",
+    "url": "https://mewartreats.com",
+    "telephone": "+917747870418",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Udaipur",
+      "addressRegion": "Rajasthan",
+      "addressCountry": "IN"
+    },
+    "servesCuisine": "Rajasthani",
+    "priceRange": "$$",
+    "openingHours": "Mo-Su 10:00-22:00",
+    "sameAs": [
+      "https://www.instagram.com/mewartreats"
+    ]
+  }
+  </script>
+  
+  <title>Mewar Treats - Artisanal Rajasthani Ice Cream & Kulfi | 100% Pure Vegetarian</title>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+  
+  <!-- Performance Monitoring -->
+  <script>
+    // Core Web Vitals monitoring
+    function reportWebVitals() {
+      if (window.gtag) {
+        // Report CLS, FID, LCP, etc.
+        window.gtag('event', 'web_vitals', {
+          event_category: 'performance'
+        });
+      }
+    }
+    
+    // Lazy loading for images
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+          }
+        });
+      });
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+          imageObserver.observe(img);
+        });
+      });
+    }
+  </script>
+  
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

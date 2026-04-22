@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://mewartreats.com/</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Mewar%20Treats%20Logo.png</image:loc>
+      <image:title>Mewar Treats Logo - Artisanal Ice Cream</image:title>
+      <image:caption>Authentic Rajasthani ice cream and kulfi makers</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Collections/Flavors Page -->
+  <url>
+    <loc>https://mewartreats.com/#flavors</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Pista.jpeg</image:loc>
+      <image:title>Pista Kulfi - Premium Pistachio Ice Cream</image:title>
+      <image:caption>Rich pistachio loaded kulfi with premium roasted pistachios</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Rajbhog.jpeg</image:loc>
+      <image:title>Rajbhog - Royal Saffron and Nuts Delight</image:title>
+      <image:caption>Royal dessert featuring saffron, cardamom, and mixed nuts</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Mango%20Bar.jpeg</image:loc>
+      <image:title>Mango Bar - Summer Special</image:title>
+      <image:caption>Hand-picked Alphonsos churned into creamy perfection</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://mewartreats.com/#about</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://mewartreats.com/#contact</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Product Pages -->
+  <url>
+    <loc>https://mewartreats.com/flavors/pista-kulfi</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Pista.jpeg</image:loc>
+      <image:title>Pista Kulfi - Premium Pistachio Ice Cream</image:title>
+      <image:caption>Rich and creamy kulfi loaded with premium roasted pistachios</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://mewartreats.com/flavors/rajbhog</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Rajbhog.jpeg</image:loc>
+      <image:title>Rajbhog - Royal Saffron Delight</image:title>
+      <image:caption>A royal dessert featuring the golden hue of saffron and mixed nuts</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://mewartreats.com/flavors/rabri-kulfi</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Rabri%20Kulfi.jpeg</image:loc>
+      <image:title>Rabri Kulfi - Traditional Slow-Cooked Delight</image:title>
+      <image:caption>Traditional slow-cooked milk kulfi with authentic caramelized Rabri taste</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://mewartreats.com/flavors/mango-bar</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Mango%20Bar.jpeg</image:loc>
+      <image:title>Mango Bar - Summer Special</image:title>
+      <image:caption>Experience the essence of summer with real mango pulp</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://mewartreats.com/flavors/matka-kulfi</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mewartreats.com/images/Matka%20Kulfi.jpeg</image:loc>
+      <image:title>Matka Kulfi - Traditional Clay Pot</image:title>
+      <image:caption>Earthy and authentic kulfi served in traditional clay pot</image:caption>
+    </image:image>
+  </url>
+  
+</urlset>
