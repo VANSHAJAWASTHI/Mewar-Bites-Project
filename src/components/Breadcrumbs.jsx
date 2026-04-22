@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Breadcrumbs.css';
 
 const Breadcrumbs = () => {
   const location = useLocation();
-  const [breadcrumbs, setBreadcrumbs] = useState([]);
 
-  useEffect(() => {
+  const breadcrumbs = useMemo(() => {
     const pathSegments = location.pathname.split('/').filter(segment => segment);
     const breadcrumbItems = [
       { name: 'Home', path: '/' }
@@ -32,7 +31,7 @@ const Breadcrumbs = () => {
       }
     }
 
-    setBreadcrumbs(breadcrumbItems);
+    return breadcrumbItems;
   }, [location]);
 
   if (breadcrumbs.length <= 1) return null;

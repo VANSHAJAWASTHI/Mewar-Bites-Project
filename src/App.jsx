@@ -5,19 +5,13 @@ import Hero from './components/Hero';
 import BestSellers from './components/BestSellers';
 import FlavorGallery from './components/FlavorGallery';
 import Story from './components/Story';
-<<<<<<< HEAD
 import FAQSection from './components/FAQSection';
-=======
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import Preloader from './components/Preloader';
-<<<<<<< HEAD
 import SEOHead from './components/SEOHead';
 import Analytics from './components/Analytics';
-=======
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
 
@@ -63,7 +57,6 @@ function App() {
 
   return (
     <div className="app-wrapper">
-<<<<<<< HEAD
       <Analytics />
       <SEOHead 
         title="Mewar Treats - Artisanal Rajasthani Ice Cream & Kulfi | 100% Pure Vegetarian"
@@ -71,8 +64,6 @@ function App() {
         image="/images/Mewar Treats Logo.png"
       />
       
-=======
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
       <AnimatePresence mode='wait'>
         {loading && <Preloader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
@@ -93,11 +84,8 @@ function App() {
             <Story />
           </div>
 
-<<<<<<< HEAD
           <FAQSection />
 
-=======
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
           <div id="contact">
             <Contact />
           </div>

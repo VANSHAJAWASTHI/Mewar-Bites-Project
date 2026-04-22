@@ -99,7 +99,6 @@ const BestSellers = () => {
     }, [selectedProduct]);
 
     return (
-<<<<<<< HEAD
         <section className="best-sellers-section section-padding" itemScope itemType="https://schema.org/Collection">
             <div className="container">
                 <header className="section-header text-center">
@@ -107,14 +106,6 @@ const BestSellers = () => {
                     <h2 itemProp="name">Best Sellers</h2>
                     <p itemProp="description">Our most popular artisanal ice creams and kulfis loved by customers</p>
                 </header>
-=======
-        <section className="best-sellers-section section-padding">
-            <div className="container">
-                <div className="section-header text-center">
-                    <span className="subtitle" style={{ color: 'var(--color-secondary)' }}>Customers' Choice</span>
-                    <h2>Best Sellers</h2>
-                </div>
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
 
                 <motion.div
                     className="best-sellers-grid"
@@ -124,25 +115,17 @@ const BestSellers = () => {
                     transition={{ duration: 0.8 }}
                 >
                     {bestSellers.map((item) => (
-<<<<<<< HEAD
                         <article
                             key={item.id}
                             className="best-seller-card"
                             onClick={() => setSelectedProduct(item)}
                             itemScope
                             itemType="https://schema.org/Product"
-=======
-                        <div
-                            key={item.id}
-                            className="best-seller-card"
-                            onClick={() => setSelectedProduct(item)}
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                         >
                             <div className="bs-image-wrapper">
                                 <span className="bs-tag">Top Pick</span>
                                 <img
                                     src={item.image}
-<<<<<<< HEAD
                                     alt={`${item.name} - ${item.description}`}
                                     className="bs-img"
                                     loading="lazy"
@@ -155,17 +138,6 @@ const BestSellers = () => {
                                 <meta itemProp="category" content={item.category} />
                             </div>
                         </article>
-=======
-                                    alt={item.name}
-                                    className="bs-img"
-                                    loading="lazy"
-                                />
-                            </div>
-                            <div className="bs-content">
-                                <h3 className="bs-title">{item.name}</h3>
-                            </div>
-                        </div>
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                     ))}
                 </motion.div>
 

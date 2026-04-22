@@ -7,7 +7,7 @@ const Analytics = () => {
   useEffect(() => {
     // Google Analytics 4 Configuration
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){window.dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX', {
       page_path: location.pathname + location.search + location.hash,

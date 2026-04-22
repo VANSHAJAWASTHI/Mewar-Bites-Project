@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductModal from './ProductModal';
-import './FlavorGallery.css'; // Reusing CSS, will add filter styles
+import './FlavorGallery.css';
 
 const allFlavors = [
     {
@@ -49,101 +49,93 @@ const allFlavors = [
         name: "Roasted Almonds",
         category: "Royal",
         image: "/images/Roasted Almonds.jpeg",
-        shortDesc: "Crunchy almond ice cream.",
-        description: "Smooth and creamy ice cream base with the satisfying crunch of perfectly roasted almonds.",
-        ingredients: "Milk, Cream, Roasted Almonds, Sugar",
+        shortDesc: "Crunchy almond perfection.",
+        description: "Premium roasted almonds blended to perfection in a creamy base.",
+        ingredients: "Milk, Sugar, Almonds",
         allergens: "Dairy, Nuts"
     },
     {
         id: 6,
-        name: "Bulk Pack",
-        category: "Family Packs",
-        image: "/images/Bulk Pack.jpeg",
-        shortDesc: "Value pack for the family.",
-        description: "Bring home the joy with our value-packed family tubs. Perfect for gatherings and daily treats.",
-        ingredients: "Varied flavors",
+        name: "Choco Vanilla",
+        category: "Chocolate",
+        image: "/images/Choco Vanilla.jpeg",
+        shortDesc: "Classic swirl delight.",
+        description: "The perfect harmony of rich chocolate and creamy vanilla in every bite.",
+        ingredients: "Milk, Cream, Cocoa, Vanilla Extract, Sugar",
         allergens: "Dairy"
     },
     {
         id: 7,
-        name: "Choco Vanilla",
-        category: "Chocolate",
-        image: "/images/Choco Vanilla.jpeg",
-        shortDesc: "Best of both worlds.",
-        description: "The classic swirl of rich chocolate and creamy vanilla. A timeless favorite for everyone.",
-        ingredients: "Milk, Cream, Cocoa, Vanilla Extract",
-        allergens: "Dairy"
-    },
-    {
-        id: 8,
-        name: "Chocolate",
-        category: "Chocolate",
-        image: "/images/Chocolate.jpeg",
-        shortDesc: "Intense cocoa indulgence.",
-        description: "Intense and indulgent chocolate ice cream crafted for true cocoa lovers.",
-        ingredients: "Milk, Cream, Cocoa Powder, Sugar",
-        allergens: "Dairy"
-    },
-    {
-        id: 9,
-        name: "Kesar Kulfi",
-        category: "Traditional",
-        image: "/images/Kesar Kulfi.jpeg",
-        shortDesc: "Saffron infused kulfi.",
-        description: "The golden hue and aromatic flavor of saffron infused into our signture creamy kulfi.",
-        ingredients: "Milk, Sugar, Saffron",
-        allergens: "Dairy"
-    },
-    {
-        id: 10,
         name: "Mango Bar",
         category: "Fruity",
         image: "/images/Mango Bar.jpeg",
-        shortDesc: "Real mango pulp bar.",
-        description: "Experience the essence of summer with real mango pulp in a refreshing, cool bar.",
+        shortDesc: "Tropical mango bliss.",
+        description: "Hand-picked Alphonsos transformed into a refreshing mango bar.",
         ingredients: "Mango Pulp, Sugar, Water",
         allergens: "None"
     },
     {
-        id: 11,
+        id: 8,
         name: "Matka Kulfi",
         category: "Traditional",
         image: "/images/Matka Kulfi.jpeg",
-        shortDesc: "Kulfi in clay pot.",
-        description: "Earthy and authentic kulfi served in a traditional clay pot (Matka) for that rustic charm.",
+        shortDesc: "Earthy clay pot tradition.",
+        description: "Authentic kulfi served in traditional earthen pots for rustic charm.",
         ingredients: "Reduced Milk, Sugar, Saffron, Nuts",
         allergens: "Dairy, Nuts"
     },
     {
-        id: 12,
+        id: 9,
+        name: "Kesar Kulfi",
+        category: "Royal",
+        image: "/images/Kesar Kulfi.jpeg",
+        shortDesc: "Golden saffron elegance.",
+        description: "Premium saffron-infused kulfi with the rich aroma of royal kitchens.",
+        ingredients: "Milk, Saffron, Sugar, Cardamom",
+        allergens: "Dairy"
+    },
+    {
+        id: 10,
         name: "Mini Chocobar",
         category: "Chocolate",
         image: "/images/Mini Chocobar.jpeg",
-        shortDesc: "Bite-sized chocobar.",
-        description: "Bite-sized chocolate coated vanilla bars. The perfect quick treat for any time of day.",
-        ingredients: "Milk, Sugar, Cocoa Solids, Chocolate Coating",
-        allergens: "Dairy, Soy"
-    },
+        shortDesc: "Pocket-sized chocolate joy.",
+        description: "Compact chocolate bars perfect for instant indulgence.",
+        ingredients: "Milk, Cream, Cocoa, Sugar",
+        allergens: "Dairy"
+    }
 ];
 
-const categories = ["All", "Royal", "Traditional", "Chocolate", "Fruity", "Family Packs"];
+const categories = ["All", "Royal", "Traditional", "Chocolate", "Fruity"];
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0 }
+};
 
 const FlavorGallery = () => {
     const [activeCategory, setActiveCategory] = useState("All");
-    const [filteredFlavors, setFilteredFlavors] = useState(allFlavors);
     const [selectedFlavor, setSelectedFlavor] = useState(null);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => {
+    const filteredFlavors = useMemo(() => {
         if (activeCategory === "All") {
-            setFilteredFlavors(allFlavors);
+            return allFlavors;
         } else {
-            setFilteredFlavors(allFlavors.filter(f => f.category === activeCategory));
+            return allFlavors.filter(f => f.category === activeCategory);
         }
     }, [activeCategory]);
 
     return (
-<<<<<<< HEAD
         <section id="flavors" className="flavor-gallery-section section-padding" itemScope itemType="https://schema.org/Menu">
             <div className="container">
                 <header className="section-header text-center">
@@ -151,14 +143,6 @@ const FlavorGallery = () => {
                     <h2 itemProp="name">Artisanal Flavors</h2>
                     <p itemProp="description">Discover our handcrafted selection of traditional Rajasthani ice creams and kulfis</p>
                 </header>
-=======
-        <section className="flavors-section section-padding">
-            <div className="container">
-                <div className="section-header text-center">
-                    <span className="subtitle">Our Collections</span>
-                    <h2>Curated Delights</h2>
-                </div>
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
 
                 <div className="filter-tabs">
                     {categories.map(cat => (
@@ -172,15 +156,10 @@ const FlavorGallery = () => {
                     ))}
                 </div>
 
-
                 <motion.div layout className="flavor-grid">
                     <AnimatePresence>
                         {filteredFlavors.map((flavor) => (
-<<<<<<< HEAD
                             <motion.article
-=======
-                            <motion.div
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                                 className="flavor-card"
                                 key={flavor.id}
                                 layout
@@ -190,48 +169,29 @@ const FlavorGallery = () => {
                                 transition={{ duration: 0.4 }}
                                 onClick={() => setSelectedFlavor(flavor)}
                                 layoutId={`card-${flavor.id}`}
-<<<<<<< HEAD
                                 itemScope
                                 itemType="https://schema.org/MenuItem"
-=======
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                             >
                                 <div className="card-image-wrapper">
                                     <div className="category-tag">{flavor.category}</div>
                                     <motion.img
                                         src={flavor.image}
-<<<<<<< HEAD
                                         alt={`${flavor.name} - ${flavor.shortDesc}`}
                                         className="flavor-image"
                                         loading="lazy"
                                         layoutId={`image-${flavor.id}`}
                                         itemProp="image"
-=======
-                                        alt={flavor.name}
-                                        className="flavor-image"
-                                        loading="lazy"
-                                        layoutId={`image-${flavor.id}`}
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                                     />
                                     <div className="overlay"></div>
-
                                 </div>
                                 <div className="card-content">
                                     <div className="card-header">
-<<<<<<< HEAD
                                         <h3 itemProp="name">{flavor.name}</h3>
                                     </div>
                                     <p itemProp="description">{flavor.shortDesc}</p>
                                     <meta itemProp="offers" content={`Price available on request - ${flavor.category} collection`} />
                                 </div>
                             </motion.article>
-=======
-                                        <h3>{flavor.name}</h3>
-                                    </div>
-                                    <p>{flavor.shortDesc}</p>
-                                </div>
-                            </motion.div>
->>>>>>> 72fe3b7611a8c821c34405e66d91519787f2d4e8
                         ))}
                     </AnimatePresence>
                 </motion.div>
